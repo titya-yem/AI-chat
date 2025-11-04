@@ -10,6 +10,10 @@ app.get("/", (req: Request, res: Response) => {
     res.send("Hello lamdouy");
 })
 
+app.get("/api/hello", (req: Request, res: Response) => {
+    res.json({ message: "Hello from the API" });
+})
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`);

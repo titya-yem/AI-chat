@@ -1,5 +1,15 @@
+import { useEffect, useState } from "react";
+
 const App = () => {
-  return <div>Hello Lamdouy</div>;
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch("/api/hello")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  }, []);
+
+  return <p>{message}</p>;
 };
 
 export default App;
