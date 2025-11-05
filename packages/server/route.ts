@@ -1,0 +1,17 @@
+import { Router } from 'express';
+import type { Request, Response } from 'express';
+import { chatController } from './controllers/chat.contoller';
+
+const router = Router();
+
+router.get('/', (req: Request, res: Response) => {
+  res.send('Hello lamdouy');
+});
+
+router.get('/api/hello', (req: Request, res: Response) => {
+  res.json({ message: 'Hello from the API' });
+});
+
+router.post('/api/chat', chatController.sendMessage);
+
+export default router;
