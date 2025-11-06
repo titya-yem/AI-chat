@@ -1,37 +1,34 @@
 import { useForm } from 'react-hook-form';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { FaArrowUp } from 'react-icons/fa';
-import axios from 'axios';
-import { useRef } from 'react';
 
-type FormData = {
+export type ChatFormData = {
   prompt: string;
 };
 
-const ChatBot = () => {
-  // Generate a unique conversation ID for the session
-  const conversationId = useRef(crypto.randomUUID());
-  const { register, handleSubmit, reset, formState } = useForm<FormData>();
+type Props = {
+  onSubmit: (data: ChatFormData) => void;
+};
 
-  const onSubmit = async ({ prompt }: FormData) => {
-    reset();
-    await axios.post('/api/chat', {
-      prompt,
-      conversationId: conversationId.current,
-    });
-  };
+const ChatInput = ({ onSubmit }: Props) => {
+  const { register, handleSubmit, reset, formState } = useForm<ChatFormData>();
 
-  const onKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
+  const submit = handleSubmit((data) => {
+    reset({ prompt: '' });
+    onSubmit(data);
+  });
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      handleSubmit(onSubmit)();
+      submit();
     }
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
-      onKeyDown={onKeyDown}
+      onSubmit={submit}
+      onKeyDown={handleKeyDown}
       className="flex flex-col gap-2 items-end border-2 p-4 rounded-3xl"
     >
       <textarea
@@ -39,6 +36,7 @@ const ChatBot = () => {
           required: true,
           validate: (data) => data.trim().length > 0,
         })}
+        autoFocus
         className="w-full border-0 focus:outline-0 resize-none"
         placeholder="Ask anything"
         maxLength={1000}
@@ -53,4 +51,4 @@ const ChatBot = () => {
   );
 };
 
-export default ChatBot;
+export default ChatInput;

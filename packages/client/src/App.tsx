@@ -1,8 +1,8 @@
-import ChatBot from './components/ChatBot';
+import ChatBot from './components/chat/ChatBot';
 
 const App = () => {
   return (
-    <div>
+    <div className="p-4 h-screen">
       <ChatBot />
     </div>
   );
