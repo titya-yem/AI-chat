@@ -1,0 +1,4 @@
+Summarize the following cutomer reviews into a short paragraph
+highlighting key themes, both positive and negative: 
+      
+{{reviews}}
