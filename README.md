@@ -33,7 +33,7 @@ Here are the key takeaways from this project:
 - **Frontend:** React 
 - **Backend:** Node.js / Express  
 - **AI Integration:** OpenAI API (ChatGPT)  
-- **Database:** Neon (Postgree)
+- **Database:** Neon (PostgreSQL)
 - **Tools & Libraries:** Axios, Prisma, concurrentcy, Husky, Lint-staged, TailwindCss, dayjs and more
 - **Dependecy:**   Bun
 
