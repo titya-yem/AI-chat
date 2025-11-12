@@ -30,11 +30,12 @@ Here are the key takeaways from this project:
 
 ## 🧩 Tech Stack
 
-- **Frontend:** React / Next.js  
+- **Frontend:** React 
 - **Backend:** Node.js / Express  
 - **AI Integration:** OpenAI API (ChatGPT)  
-- **Database:** MongoDB  
-- **Tools & Libraries:** Axios, dotenv, and middleware for secure API handling  
+- **Database:** Neon (Postgree)
+- **Tools & Libraries:** Axios, Prisma, concurrentcy, Husky, Lint-staged, TailwindCss, dayjs and more
+- **Dependecy:**   Bun
 
 ---
 
